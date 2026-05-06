@@ -1,13 +1,16 @@
 const express = require("express")
-const app = express()
-const authRoutes = require('./routes/auth.route')
+const authRoutes = require("./routes/auth.route")
 const tasksRoutes = require("./routes/tasks.route")
+const trackerRoutes = require("./routes/tracker.route")
 
-app.get('/',(req,res)=>{
+const app = express()
+
+app.get('/health',(req,res)=>{
     res.send('its working kanhaji')
 })
 
 app.use('/api/tasks',tasksRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api/tracker',)
 
 module.exports = app
