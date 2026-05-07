@@ -24,23 +24,35 @@ async function createTracker(req,res){
     }
 }
 
-//pending
-async function editTracker( req,res) {
+async function editTracker(req,res) {
     try {
-        const userId = req.params.id;
+        const trackerId = req.params.id;
 
         const {trackerName , trackerType , trackerLimit} = req.body;
 
-        const editTracker = await trackerModel.up
+        const editTracker = await trackerModel.findByIdAndUpdate(trackerId,
+            {
+                trackerName , trackerLimit , trackerType
+            }
+        )
+
+        return res.status(200).json({
+            message : "tracker edited successfully"
+        })
     } catch (err) {
         console.error(err)
     }
 }
 
-//pending
 async function deleteTracker(req,res) {
     try {
-        
+        const trackerId = req.params.id;
+
+        const deleteTracker = await trackerModel.findByIdAndDelete(trackerId)
+
+        return res.status(200).json({
+            message : "tracker deleted successfully"
+        })
     } catch (err) {
         console.error(err)
     }

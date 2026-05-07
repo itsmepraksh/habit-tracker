@@ -12,7 +12,7 @@ const taskSchema = mongoose.Schema({
         required : true
     },
     status : {
-        type : String,
+        type : Number,
         enum : [0,1],
         required : true
     }

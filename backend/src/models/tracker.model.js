@@ -12,7 +12,11 @@ const trackerSchema = mongoose.Schema({
         required : true,
         enum : ['professional','educational','personal']
     },
-    trackerLimit : {
+    trackerTaskLimit : {
+        type : Number,
+        required : true
+    },
+    trackerTimeLimit : {
         type : Number,
         required : true
     },
