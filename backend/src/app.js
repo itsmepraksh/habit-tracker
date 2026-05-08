@@ -2,7 +2,7 @@ const express = require("express")
 const authRoutes = require("./routes/auth.route")
 const tasksRoutes = require("./routes/tasks.route")
 const trackerRoutes = require("./routes/tracker.route")
-
+const graphRoutes = require("./routes/graph.route")
 const app = express()
 
 app.get('/health',(req,res)=>{
@@ -12,5 +12,6 @@ app.get('/health',(req,res)=>{
 app.use('/api/tasks',tasksRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/tracker',trackerRoutes)
+app.use('/api/graph',graphRoutes)
 
 module.exports = app
