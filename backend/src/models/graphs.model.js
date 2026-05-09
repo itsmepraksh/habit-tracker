@@ -17,6 +17,10 @@ const graphSchema = new mongoose.Schema({
     achivedTasks :{
         required : true,
         type : Number
+    },
+    currentDay:{
+        required : true,
+        type : Number
     }
 })
 
