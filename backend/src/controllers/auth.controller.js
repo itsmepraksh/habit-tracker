@@ -1,4 +1,6 @@
 const userModel = require('../models/users.model')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 async function registerController(req,res){
     try {
@@ -20,7 +22,9 @@ async function registerController(req,res){
         })
 
     } catch (err) {
-        console.error(err)
+        return res.status(500).json({
+            message : err.message || "Internal server error"
+        })
     }
 }
 
@@ -34,18 +38,24 @@ async function loginController(req,res) {
             {message : "user not found"}
         )
 
-        const isValidPassword = await isUserExist.password == password;
+        const isValidPassword = await bcrypt.compare(password,isUserExist.password)
 
         if(!isValidPassword) return res.status(401).json({
             message : "email OR password got wrong"
         })
+
+        const token = jwt.sign({userId : isUserExist._id},process.env.JWT_SECRET)
+
+        res.setCookie("token",token)
 
         return res.status(200).json({
             message : "user loggedIn successfully"
         })
 
     } catch (err) {
-        console.error(err)
+        return res.status(500).json({
+            message : err.message || "Internal server error"
+        })
     }
 }
 
@@ -55,7 +65,9 @@ async function logoutController(req,res){
             message : 'Logout successfully'
         })
     } catch (err) {
-        console.error(err)
+        return res.status(500).json({
+            message : err.message || "Internal server error"
+        })
     }
 }
 
