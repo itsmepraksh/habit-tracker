@@ -14,7 +14,9 @@ async function taskPointInputController(req,res) {
             message : "graph updated successfully"
         })
     } catch (err) {
-        console.error(err)
+        return res.status(500).json({
+            message : err.response || "Internal server error"
+        })
     }
 }
 
@@ -31,7 +33,9 @@ async function graphGenerateController(req,res) {
         })
 
     } catch (err) {
-        console.error(err)
+        return res.status(500).json({
+            message : err.response || "Internal server error"
+        })
     }
 }
 
