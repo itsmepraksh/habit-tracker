@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const {createTracker , editTracker , deleteTracker} = require('../controllers/tracker.controller')
+const {createTracker , editTracker , deleteTracker , getAllTracker} = require('../controllers/tracker.controller')
+
+router.get('/allTracker',getAllTracker)
 
 router.post('/create/:id',createTracker)
 

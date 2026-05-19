@@ -12,7 +12,7 @@ app.get('/health',(req,res)=>{
 
 app.use('/api/tasks',authMiddleware,tasksRoutes)
 app.use('/api/auth',authMiddleware,authRoutes)
-app.use('/api/tracker',authMiddleware,trackerRoutes)
+app.use('/api/tracker',trackerRoutes)
 app.use('/api/graph',authMiddleware,graphRoutes)
 
 module.exports = app

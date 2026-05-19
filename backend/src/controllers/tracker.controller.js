@@ -19,6 +19,10 @@ async function createTracker(req,res){
             userId
         })
 
+        return res.status(201).json({
+            message : "tracker created successfully"
+        })
+
     } catch (err) {
         console.error(err)
     }
@@ -58,4 +62,24 @@ async function deleteTracker(req,res) {
     }
 }
 
-module.exports = { createTracker ,editTracker ,deleteTracker}
+async function getAllTracker(req,res) {
+    try {
+        const fetchAllTracker = await trackerModel.findAll();
+
+        if(!fetchAllTracker || fetchAllTracker.length==0) return res.status(404).json({
+            message : "tracker not found"
+        })
+
+        return res.status(200).json({
+            message : "tracker fetch successfully",
+            data : fetchAllTracker
+        })
+
+    } catch (err) {
+        return res.status(500).json({
+            message : err.message || "Internal Server Error"
+        })
+    }
+}
+
+module.exports = { createTracker ,editTracker ,deleteTracker ,getAllTracker }
