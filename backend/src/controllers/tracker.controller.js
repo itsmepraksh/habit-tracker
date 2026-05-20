@@ -3,7 +3,7 @@ const userModel = require('../models/users.model')
 
 async function createTracker(req,res){
     try {
-        const userId = req.params.id;
+        const userId = req.cookies.userId
         const {trackerName , trackerType , trackerLimit} = req.body;
 
         const isExist = await trackerModel.find({trackerName : trackerName})

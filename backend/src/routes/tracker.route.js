@@ -5,7 +5,7 @@ const {createTracker , editTracker , deleteTracker , getAllTracker} = require('.
 
 router.get('/allTracker',getAllTracker)
 
-router.post('/create/:id',createTracker)
+router.post('/create',createTracker)
 
 router.patch('/edit/:id',editTracker)
 

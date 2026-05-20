@@ -6,7 +6,7 @@ const graphRoutes = require("./routes/graph.route")
 const {authMiddleware} = require("./middleware/auth.middleware")
 const app = express()
 
-app.get('/health',(req,res)=>{
+app.get('/api/health',(req,res)=>{
     res.send('its working kanhaji')
 })
 
