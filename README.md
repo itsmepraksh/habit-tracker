@@ -58,3 +58,8 @@ frontend/
 ├── public/
 │
 └── package.json
+
+
+
+
+types pending hai isme folder se leke sab kuch

@@ -1,22 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react";
+
+import { createTracker } from "@/services/tracker.service";
 import { useForm } from "react-hook-form"
 
 
 const page = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-
-   
-
-
   const onSubmit = async (data: any) => {
 
   try {
 
-    const res = await createTracker(data);
-
+     const res = await createTracker(data);
     console.log(res);
 
   } catch (error) {
